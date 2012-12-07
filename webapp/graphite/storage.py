@@ -36,7 +36,8 @@ class Store:
 
   def get(self, metric_path): #Deprecated
     for directory in self.directories:
-      relative_fs_path = metric_path.replace('.', '/') + '.wsp'
+      import os
+      relative_fs_path = metric_path.replace('.', os.sep) + '.wsp'
       absolute_fs_path = join(directory, relative_fs_path)
 
       if exists(absolute_fs_path):
