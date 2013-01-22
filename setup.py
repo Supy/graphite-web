@@ -59,7 +59,8 @@ setup(
   ],
   package_data={'graphite' :
     ['templates/*', 'local_settings.py.example']},
+  include_package_data=True,
   scripts=glob('bin/*'),
-  data_files=webapp_content.items() + storage_dirs + conf_files + examples,
+  data_files=storage_dirs + conf_files + examples,
   **setup_kwargs
 )

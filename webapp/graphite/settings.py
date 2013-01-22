@@ -30,7 +30,9 @@ JAVASCRIPT_DEBUG = False
 # Filesystem layout
 WEB_DIR = dirname( abspath(__file__) )
 WEBAPP_DIR = dirname(WEB_DIR)
-GRAPHITE_ROOT = dirname(WEBAPP_DIR)
+GRAPHITE_ROOT = os.environ.get('GRAPHITE_ROOT')
+if GRAPHITE_ROOT is None:
+    GRAPHITE_ROOT = dirname(WEBAPP_DIR)
 THIRDPARTY_DIR = join(WEB_DIR,'thirdparty')
 # Initialize additional path variables
 # Defaults for these are set after local_settings is imported
@@ -119,7 +121,8 @@ if not GRAPHITE_WEB_APP_SETTINGS_LOADED:
 ## Set config dependent on flags set in local_settings
 # Path configuration
 if not CONTENT_DIR:
-  CONTENT_DIR = join(WEBAPP_DIR, 'content')
+  # CONTENT_DIR = join(WEBAPP_DIR, 'content')
+  CONTENT_DIR = join(WEB_DIR, 'content')
 if not CSS_DIR:
   CSS_DIR = join(CONTENT_DIR, 'css')
 
